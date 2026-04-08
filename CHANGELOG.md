@@ -5,6 +5,20 @@ All notable changes to Synapse Skills will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.5] - 2026-04-09
+
+### Changed
+- **版本号同步** — 与 synapse-code 保持版本对齐（无实际代码变更）
+
+---
+
+## [1.1.4] - 2026-04-08
+
+### Changed
+- **CHANGELOG 对齐** — 补充 v1.1.x 版本历史记录，与 synapse-code 一致
+
+---
+
 ## [1.1.3] - 2026-04-08
 
 ### Changed
