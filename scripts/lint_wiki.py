@@ -24,22 +24,25 @@ def find_all_wikilinks(content: str) -> list:
 
 
 def find_all_pages(wiki_root: Path) -> dict:
-    """Find all wiki pages by type."""
+    """Find all wiki pages by type (recursively scan subdirectories)."""
     pages = {
         "concepts": {},
         "entities": {},
         "summaries": {},
     }
 
-    for md_file in (wiki_root / "wiki" / "concepts").glob("*.md"):
+    # Recursively scan concepts directory
+    for md_file in (wiki_root / "wiki" / "concepts").rglob("*.md"):
         title = extract_title(md_file.read_text(encoding="utf-8"))
         pages["concepts"][title] = md_file
 
-    for md_file in (wiki_root / "wiki" / "entities").glob("*.md"):
+    # Recursively scan entities directory
+    for md_file in (wiki_root / "wiki" / "entities").rglob("*.md"):
         title = extract_title(md_file.read_text(encoding="utf-8"))
         pages["entities"][title] = md_file
 
-    for md_file in (wiki_root / "wiki" / "summaries").glob("*.md"):
+    # Recursively scan summaries directory
+    for md_file in (wiki_root / "wiki" / "summaries").rglob("*.md"):
         # For summaries, always use filename as title (matches wikilink format)
         # This ensures [[filename]] links work correctly
         title = md_file.stem
