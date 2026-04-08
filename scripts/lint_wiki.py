@@ -40,7 +40,9 @@ def find_all_pages(wiki_root: Path) -> dict:
         pages["entities"][title] = md_file
 
     for md_file in (wiki_root / "wiki" / "summaries").glob("*.md"):
-        title = extract_title(md_file.read_text(encoding="utf-8"))
+        # For summaries, always use filename as title (matches wikilink format)
+        # This ensures [[filename]] links work correctly
+        title = md_file.stem
         pages["summaries"][title] = md_file
 
     return pages

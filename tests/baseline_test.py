@@ -142,6 +142,9 @@ def main():
     log(f'Results: {passed}/{total} tests passed', Colors.GREEN if passed == total else Colors.RED)
     log('=' * 60 + '\n', Colors.BLUE)
 
+    # Note: Integration tests available in integration_test.py (5 additional tests)
+    # Run: python3 tests/integration_test.py
+
     return 0 if passed == total else 1
 
 if __name__ == '__main__':
