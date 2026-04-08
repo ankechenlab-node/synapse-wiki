@@ -7,6 +7,7 @@ description: >
   当用户提到 wiki、知识库、摄取资料、查询知识、整理文档时使用此技能。
 version: 1.1.0
 date: 2026-04-08
+user-invocable: true
 metadata:
   {
     "openclaw":
@@ -32,6 +33,49 @@ tags: [knowledge-base, wiki, documentation, learning, obsidian]
 | **知识形式** | 孤立文档 | 结构化、交叉链接的知识页面 |
 | **随时间变化** | 越积越多，难以查找 | 越用越聪明，自动关联 |
 | **维护者** | 人类 | AI（编译、交叉引用、归档） |
+
+---
+
+## 🚦 快速决策：我该用什么命令？
+
+```
+你想做什么？
+│
+├─ 开始一个新知识库         → ingest（初始化）
+│   └─ 例："我想建一个 AI 学习知识库"
+│
+├─ 保存新资料/文章          → ingest（摄取）
+│   └─ 例："这篇好文要存起来"、"剪辑网页保存"
+│
+├─ 查询已有知识             → query（查询）
+│   └─ 例："RAG 是什么？"、"上次那个概念怎么解释"
+│
+└─ 检查知识库健康度         → lint（检查）
+    └─ 例："有没有死链接？"、"检查孤立页面"
+```
+
+**常用场景**:
+- 第一次用 → `/synapse-wiki init ~/my-wiki "AI 知识库"`
+- 看到好文章 → `/synapse-wiki ingest ~/my-wiki raw/articles/xxx.md`
+- 有疑问 → `/synapse-wiki query ~/my-wiki "你的问题"`
+
+---
+
+## 📋 命令速查卡片
+
+| 命令 | 用途 | 示例 |
+|------|------|------|
+| `/synapse-wiki init` | 初始化知识库 | `/synapse-wiki init ~/my-wiki "AI 知识库"` |
+| `/synapse-wiki ingest` | 摄取新资料 | `/synapse-wiki ingest ~/my-wiki raw/articles/article.md` |
+| `/synapse-wiki query` | 查询知识 | `/synapse-wiki query ~/my-wiki "RAG 是什么"` |
+| `/synapse-wiki lint` | 健康检查 | `/synapse-wiki lint ~/my-wiki` |
+
+**使用提示**:
+- 首次使用先用 `init` 创建目录结构
+- 每次保存资料后用 `ingest` 编译为知识
+- 定期运行 `lint` 检查健康度
+
+---
 
 ## 三层架构
 
