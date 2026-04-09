@@ -5,6 +5,13 @@ All notable changes to Synapse Skills will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.7] - 2026-04-09
+
+### Fixed
+- **脚本 --help 支持** — 所有 4 个脚本改用 argparse，支持标准 --help 参数
+
+---
+
 ## [1.1.6] - 2026-04-09
 
 ### Fixed

@@ -9,6 +9,7 @@ ingest.py — 摄取新资料到 Wiki
 import sys
 import json
 import re
+import argparse
 from pathlib import Path
 from datetime import datetime
 
@@ -303,12 +304,13 @@ def ingest_source(wiki_root: Path, source_path: Path):
 
 
 def main():
-    if len(sys.argv) < 3:
-        print("Usage: python3 ingest.py /path/to/wiki <source-file>")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="摄取新资料到 Wiki")
+    parser.add_argument("wiki", help="Wiki 根目录路径")
+    parser.add_argument("source", help="源文件路径")
+    args = parser.parse_args()
 
-    wiki_root = Path(sys.argv[1])
-    source_path = Path(sys.argv[2])
+    wiki_root = Path(args.wiki)
+    source_path = Path(args.source)
 
     success = ingest_source(wiki_root, source_path)
     sys.exit(0 if success else 1)

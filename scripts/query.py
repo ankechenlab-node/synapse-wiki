@@ -13,6 +13,7 @@ query.py — Query the Wiki knowledge base
 
 import sys
 import re
+import argparse
 from pathlib import Path
 from datetime import datetime
 
@@ -125,12 +126,13 @@ def query_wiki(wiki_root: Path, query: str) -> str:
 
 
 def main():
-    if len(sys.argv) < 3:
-        print("Usage: python3 query.py /path/to/wiki \"<query>\"")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="查询 Wiki 知识库")
+    parser.add_argument("wiki", help="Wiki 根目录路径")
+    parser.add_argument("query", help="查询文本")
+    args = parser.parse_args()
 
-    wiki_root = Path(sys.argv[1]).resolve()
-    query = sys.argv[2]
+    wiki_root = Path(args.wiki).resolve()
+    query = args.query
 
     if not wiki_root.exists():
         print(f"Error: Wiki root not found: {wiki_root}")
