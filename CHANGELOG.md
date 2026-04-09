@@ -5,6 +5,21 @@ All notable changes to Synapse Skills will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.6] - 2026-04-09
+
+### Fixed
+- **代码审计问题修复** — 修复 3 个 P1/P2 级别问题
+- `ingest.py` — 修复 YAML sources 格式错误（从字符串改为列表格式）
+- `ingest.py` — 添加路径穿越保护（检查 source 是否在 wiki root 内）
+- `query.py` — 修复 `or not pages` 逻辑反转问题
+- `baseline_test.py` — 修复 lint 测试过于宽松的问题
+
+### Why
+- 提高代码质量和健壮性
+- 减少潜在崩溃风险
+
+---
+
 ## [1.1.5] - 2026-04-09
 
 ### Changed

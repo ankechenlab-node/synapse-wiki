@@ -51,7 +51,8 @@ def read_wiki_pages(wiki_root: Path, pages: list) -> list:
             title_match = re.search(r'^# (.+)$', content, re.MULTILINE)
             if title_match:
                 title = title_match.group(1).strip()
-                if any(p['title'] == title for p in pages) or not pages:
+                # 如果 pages 为空则跳过（没有匹配到 index 条目），否则检查标题是否匹配
+                if pages and any(p['title'] == title for p in pages):
                     results.append({
                         'path': str(md_file.relative_to(wiki_root)),
                         'title': title,

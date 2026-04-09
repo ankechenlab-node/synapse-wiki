@@ -119,12 +119,16 @@ def create_concept_page(concept: str, wiki_root: Path, sources: list):
     if concept_path.exists():
         return None
 
+    # 格式化 sources 为 YAML 列表格式
+    sources_yaml = "\n".join([f"  - {s}" for s in sources]) if sources else "[]"
+
     concept_content = f"""---
 title: {concept}
 type: concept
 created: {today}
 updated: {today}
-sources: {sources}
+sources:
+{sources_yaml}
 tags: []
 ---
 
@@ -258,6 +262,14 @@ def ingest_source(wiki_root: Path, source_path: Path):
 
     if not source_path.exists():
         print(f"Error: Source file not found: {source_path}")
+        return False
+
+    # 路径穿越保护：确保 source_path 在 wiki_root 目录下
+    try:
+        source_path.relative_to(wiki_root)
+    except ValueError:
+        print(f"Error: Source file must be within wiki root: {wiki_root}")
+        print(f"  Got: {source_path}")
         return False
 
     print(f"Ingesting: {source_path}")
