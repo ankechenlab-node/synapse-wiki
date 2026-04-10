@@ -5,6 +5,25 @@ All notable changes to Synapse Skills will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2026-04-10
+
+### Added
+- **Brain/Hands 架构** — synapse-wiki 作为 synapse-brain 的 Hand Agent 被调度执行
+- **code 互操作** — 接收 synapse-code Pipeline 完成后的自动知识沉淀
+- **知识沉淀内容** — 技术决策、代码模式、Bug 修复、API 变更
+- **意图路由兼容** — 支持被 task_router.py 识别（ingest/query/lint 意图）
+
+### Changed
+- **homepage** — 更新为 `https://github.com/ankechenlab-node/synapse-wiki`
+- **tags** — 新增 `brain-compatible` 标记
+
+### Why
+- 让知识管理成为开发流程的自然延伸，而非独立操作
+- 通过 Brain 统一入口，降低用户学习成本
+- synapse-code 开发过程自动沉淀知识到 wiki
+
+---
+
 ## [1.1.7] - 2026-04-09
 
 ### Fixed
